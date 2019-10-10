@@ -1,0 +1,3 @@
+<h1>Edit Your Profile</h1>
+<%= render partial: 'form', locals: { employee: @employee } %>
+<%= button_to "Cancel", employee_path(@employee), method: "get" %>

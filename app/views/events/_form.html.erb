@@ -1,0 +1,20 @@
+<%= form_for @event do |f| %>
+  <%= f.label :name, 'Learning Title' %></br>
+  <%= f.text_field :name %></br>
+
+  <%= f.label :date, 'Date (DD/MM/YYYY)' %></br>
+  <%= f.text_field :date %></br>
+
+  <%= f.label :category, 'Type of Learning' %></br>
+  <%= f.select :category, event_category_arr, :prompt => 'Select Learning Type' %><br>
+
+  <%= f.label :description, "Tell us a bit about this learning experience..." %></br>
+  <%= f.text_area :description %></br>
+
+  <%= f.label :shared, "Have you shared what you've learned with your team?" %></br>
+  <%= f.check_box :shared, {}, "1", "0"%></br>
+
+  <%= hidden_field_tag 'event[employee_ids][]', params[:employee_id] %>
+
+  <%= f.submit %>
+<% end %>

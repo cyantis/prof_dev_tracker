@@ -1,0 +1,17 @@
+<%= flash[:message] if flash[:message] %>
+
+<h1>Login to Professional Development Tracker!</h1>
+
+<%= form_for :employee, url: sessions_path do |f|%>
+  <%= f.label :username %>
+  <%= f.text_field :username %> <br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password%> <br>
+
+  <%= f.submit 'Login!' %>
+<% end %>
+
+
+<p>New to Professional Development Tracker?</p>
+<p><%= button_to "Create an Account!", new_employee_path, method: :get %><p>

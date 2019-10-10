@@ -1,0 +1,20 @@
+<h1>Enter New Learning</h1>
+<%= render partial: 'form' %>
+
+<%= button_to "Cancel", employee_path(@employee), method: "get" %>
+
+<div id="eventName">
+  <p id="eventDate"></p>
+  <p id="eventCategory"></p>
+  <p id="eventDescription"></p>
+  <p id="eventShared"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(e) {
+      e.preventDefault();
+      alert("Does this work?");
+    });
+  });
+</script>

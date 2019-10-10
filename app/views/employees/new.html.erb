@@ -1,0 +1,8 @@
+<% if @employee.errors %>
+    <% @employee.errors.full_messages.each do |error| %>
+      <%= content_tag(:p, error) %>
+    <% end %>
+<% end %>
+
+<h1>Create an Employee Account</h1>
+<%= render partial: 'form', locals: { employee: @employee } %>

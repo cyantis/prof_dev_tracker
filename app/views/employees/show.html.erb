@@ -1,0 +1,29 @@
+<h1><%= @employee.name %>'s Learning Log</h1>
+
+<p><%= @employee.title %> | <%= @employee.location.name %></p>
+
+<p><%= @employee.bio %></p>
+
+<%= button_to "Log New Learning", new_employee_event_path(@employee), method: "get" %>
+<%= button_to "Edit Your Profile", edit_employee_path(@employee), method: "get" %>
+<%= button_to "Home", root_path, method: "get" %>
+<%= button_to "Logout", sessions_path, method: :delete %>
+
+<ul>
+  <% @employee.events.each do |e| %>
+    <li><%= link_to e.name, employee_event_path(@employee, e) %> | <%= e.date %></li>
+  <% end %>
+</ul>
+
+<% if @employee.manager_id === nil %>
+  <h3>Your Staff's Learning Activity</h3>
+  <% employee_arr.each do |emp| %>
+    <p><%= emp.name %></p>
+      <ul>
+        <% employee_event_arr(emp).each do |e| %>
+          <li><%= link_to "#{e.name}", event_path(e) %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+<% end %>

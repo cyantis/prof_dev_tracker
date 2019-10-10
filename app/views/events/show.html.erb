@@ -1,0 +1,19 @@
+<h1><%= @event.name %></h1>
+<ul>
+  <li>When: <%= @event.date %></li>
+  <li>What: <%= @event.category %></li>
+  <li>Your thoughts: <%= @event.description %></li>
+  <%if @event.shared %>
+    <li>Nice job sharing this with your team!</li>
+  <% else %>
+    <li>Don't forget to share this with your team!</li>
+  <% end %>
+
+</ul>
+
+<%= button_to "Home", root_path, method: "get" %>
+<%= button_to "Your learning profile", employee_path(@employee), method: "get" %>
+<% if @event.employees.include?(@employee) %>
+  <%= button_to "Edit Learning", edit_employee_event_path(@employee, @event), method: "get" %>
+  <%= button_to "Delete Learning", employee_event_path(@employee, @event), method: :delete %>
+<% end %>
