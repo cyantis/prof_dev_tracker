@@ -1,4 +1,12 @@
 <h1>Edit Learning</h1>
 <%= render partial: 'form' %>
-<%= button_to "Cancel", employee_path(@employee), method: "get" %>
+<%= button_to "Back to Learning Profile", employee_path(@employee), method: "get" %>
 <%= button_to "Delete Learning", employee_event_path(@employee, @event), method: :delete %>
+
+<div id="newEvent">
+  <p id="eventName"></p>
+  <p id="eventDate"></p>
+  <p id="eventCategory"></p>
+  <p id="eventDescription"></p>
+  <p id="eventShared"></p>
+</div>
