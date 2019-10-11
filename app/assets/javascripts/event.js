@@ -9,7 +9,8 @@ $(function () {
       $("#eventCategory").text(data.category);
       $("#eventDescription").text(data.description);
       $("#eventShared").text(data.shared);
-      $('#new_event')[0].reset();
+      //$('#new_event')[0].reset(); 
+      $("#newEventBtn").attr("disabled", false);
     });
   });
 });
