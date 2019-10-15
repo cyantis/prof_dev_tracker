@@ -12,10 +12,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    binding.pry
     @event = Event.create(event_params)
     #@employee = Employee.find(params[:event][:employee_ids][0])
-
     if @event.save
       flash[:message] = "Learning Logged!"
       render json: @event, status: 201
