@@ -3,9 +3,8 @@
 <%= button_to "Log New Learning", new_employee_event_path(@employee), method: "get" %>
 <%= button_to "Edit Your Profile", edit_employee_path(@employee), method: "get" %>
 
-<h1>Who's Learning What?</h1>
-<ul>
-  <% org_event_arr.each do |e| %>
-    <li><%= link_to "#{e.employees.last.name} | #{e.name}", event_path(e) %></li>
-  <% end %>
-</ul>
+<div>
+  <h1>Who's Learning What?</h1>
+  <ul id="orgLearningList">
+  </ul>
+</div>
