@@ -4,20 +4,15 @@ $(function () {
     let formData = $(this).serialize();
     let posting = $.post('/events', formData);
     posting.done(function(data) {
-      $("#eventName").text(data.name);
-      $("#eventDate").text(data.date);
-      $("#eventCategory").text(data.category);
-      $("#eventDescription").text(data.description);
-      $("#eventShared").text(data.shared);
-      $('#new_event')[0].reset();
-      $("#newEventBtn").attr("disabled", false);
+      let newEvent = new Event(data);
+      let newRender = newEvent.postHTML(); $('#newEventPost').html(newRender); $('#new_event')[0].reset(); $("#newEventBtn").attr("disabled", false);
     });
   });
 });
 
 
 $(function() {
-  $( ".datepicker" ).datepicker();
+  $(".datepicker").datepicker();
 });
 
 $(function() {
@@ -32,6 +27,24 @@ $(function() {
     });
   });
 });
+
+class Event {
+  constructor(e){
+    this.id = e.id;
+    this.name = e.name;
+    this.date = e.date;
+    this.category = e.category;
+    this.description = e.description;
+    this.shared = e.shared;
+  }
+}
+
+Event.prototype.postHTML = function() {
+    return (`<p>${this.name}</p>
+    <p>${this.date}</p>
+    <p>${this.category}</p>
+    <p>${this.description}</p>`);
+}
 
 
 
