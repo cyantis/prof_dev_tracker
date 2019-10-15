@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_212813) do
+ActiveRecord::Schema.define(version: 2019_10_15_154622) do
 
   create_table "employee_events", force: :cascade do |t|
     t.integer "employee_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_212813) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
-    t.date "date"
+    t.string "date"
     t.string "category"
     t.text "description"
     t.boolean "shared", default: false

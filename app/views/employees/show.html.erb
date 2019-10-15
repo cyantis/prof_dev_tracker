@@ -10,7 +10,7 @@
 <%= button_to "Logout", sessions_path, method: :delete %>
 
 <ul>
-  <% @employee.events.each do |e| %>
+  <% @employee.events.reverse.each do |e| %>
     <li><%= link_to e.name, employee_event_path(@employee, e) %> | <%= e.date %></li>
   <% end %>
 </ul>

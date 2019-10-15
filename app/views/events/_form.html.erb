@@ -3,7 +3,7 @@
   <%= f.text_field :name %></br>
 
   <%= f.label :date, 'Date (MM/DD/YYYY)' %></br>
-  <%= f.text_field :date %></br>
+  <%= f.text_field :date, class: "datepicker" %></br>
 
   <%= f.label :category, 'Type of Learning' %></br>
   <%= f.select :category, event_category_arr, :prompt => 'Select Learning Type' %><br>

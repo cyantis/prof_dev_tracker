@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :require_login
+  layout "events"
 
   def index
     @events = Event.all
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params)
-    #@employee = Employee.find(params[:event][:employee_ids][0])
+    @employee = Employee.find(params[:event][:employee_ids][0])
     if @event.save
       flash[:message] = "Learning Logged!"
       render json: @event, status: 201

@@ -9,7 +9,7 @@ module EmployeesHelper
   end
 
   def employee_event_arr(employee)
-    employee.events.each { |event| event }
+    employee.events.each { |event| event }.reverse
   end
 
 end
