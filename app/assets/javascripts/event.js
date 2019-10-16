@@ -5,7 +5,8 @@ $(function () {
     let posting = $.post('/events', formData);
     posting.done(function(data) {
       let newEvent = new Event(data);
-      let newRender = newEvent.postHTML(); $('#newEventPost').html(newRender); $('#new_event')[0].reset(); $("#newEventBtn").attr("disabled", false);
+      let newRender = newEvent.postHTML();
+      $('#newEventPost').html(newRender); $('#new_event')[0].reset(); $("#newEventBtn").attr("disabled", false);
     });
   });
 });
@@ -40,13 +41,15 @@ class Event {
 }
 
 Event.prototype.postHTML = function() {
-    return (`<p>${this.name}</p>
-    <p>${this.date}</p>
-    <p>${this.category}</p>
-    <p>${this.description}</p>`);
+    //let sharing;
+    //this.shared.includes(1) ? sharing = "Nice job sharing this with your team!" : sharing = "Don't forget to share this with your team!";
+    return (`<h1>${this.name}</h1>
+    <ul>
+      <li>${this.date}</li>
+      <li>${this.category}</li>
+      <li>${this.description}</=li>
+    </ul>`);
 }
-
-
 
 //$(function () {
 //  $('.edit_event').submit(function(e) {
