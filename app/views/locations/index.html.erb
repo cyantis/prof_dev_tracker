@@ -1,3 +1,5 @@
+<%= flash[:message] if flash[:message] %>
+
 <%= button_to "Visit Your Learning Profile", employee_path(@employee), method: "get" %>
 <%= button_to "Logout", sessions_path, method: :delete %>
 <%= button_to "Log New Learning", new_employee_event_path(@employee), method: "get" %>
