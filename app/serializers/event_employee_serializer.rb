@@ -1,3 +1,3 @@
 class EventEmployeeSerializer < ActiveModel::Serializer
-  attributes :name, :category
+  attributes :id, :name, :category, :date
 end

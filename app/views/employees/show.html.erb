@@ -9,10 +9,8 @@
 <%= button_to "Home", root_path, method: "get" %>
 <%= button_to "Logout", sessions_path, method: :delete %>
 
-<ul>
-  <% @employee.events.reverse.each do |e| %>
-    <li><%= link_to e.name, employee_event_path(@employee, e) %> | <%= e.date %></li>
-  <% end %>
+<ul id="employeeLearningList">
+
 </ul>
 
 <% if @employee.manager_id === nil %>

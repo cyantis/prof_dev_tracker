@@ -1,3 +1,4 @@
+// create new learning event w/ ajax
 $(function () {
   $('#new_event').submit(function(e) {
     e.preventDefault();
@@ -11,11 +12,13 @@ $(function () {
   });
 });
 
-
+//jQuery datepicker for learning event date
 $(function() {
   $(".datepicker").datepicker();
 });
 
+
+//populate the index page with the 10 most recently updated learning events
 $(function() {
   $(document).ready(function() {
     $.get("/events.json", function(data) {
@@ -29,6 +32,20 @@ $(function() {
   });
 });
 
+//populate employee show page with their learning events
+$(function() {
+  $(document).ready(function() {
+    $.get(`${window.location.pathname}.json`, function(data) {
+      const events = data["events"];
+      for(let i = (events.length - 1); i < events.length; i--){
+        let e = events[i]
+        $("#employeeLearningList").append(`<li><a href=${window.location.pathname}/events/${e["id"]}>${e["name"]} | ${e["date"]}</a></li>`);
+      }
+    });
+  });
+});
+
+//event class constructor
 class Event {
   constructor(e){
     this.id = e.id;
@@ -40,6 +57,7 @@ class Event {
   }
 }
 
+//event class method for html formatting/posting
 Event.prototype.postHTML = function() {
     //let sharing;
     //this.shared.includes(1) ? sharing = "Nice job sharing this with your team!" : sharing = "Don't forget to share this with your team!";
