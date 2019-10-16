@@ -35,11 +35,12 @@ $(function() {
 //populate employee show page with their learning events
 $(function() {
   $(document).ready(function() {
-    $.get(`${window.location.pathname}.json`, function(data) {
+    let path = window.location.pathname;
+    $.get(`${path}.json`, function(data) {
       const events = data["events"];
       for(let i = (events.length - 1); i < events.length; i--){
         let e = events[i]
-        $("#employeeLearningList").append(`<li><a href=${window.location.pathname}/events/${e["id"]}>${e["name"]} | ${e["date"]}</a></li>`);
+        $("#employeeLearningList").append(`<li><a href=${path}/events/${e["id"]}>${e["name"]} | ${e["date"]}</a></li>`);
       }
     });
   });

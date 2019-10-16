@@ -17,7 +17,6 @@ class EventsController < ApplicationController
     if @event.save
       flash[:message] = "Learning Logged!"
       render json: @event, status: 201
-      #redirect_to employee_event_path(@employee, @event)
     else
       render :new
     end
@@ -42,7 +41,6 @@ class EventsController < ApplicationController
     @event.update(event_params)
     @employee = Employee.find(params[:event][:employee_ids][0])
     flash[:message] = "Learning Updated!"
-    #render json: @event, status: 201
     redirect_to employee_event_path(@employee, @event)
   end
 
