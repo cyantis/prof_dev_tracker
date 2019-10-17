@@ -16,7 +16,7 @@ class EmployeesController < ApplicationController
     if @employee.save
       session[:user_id] =  @employee.id
       flash[:message] = "Employee Created!"
-      redirect_to employee_path(@employee)
+      redirect_to root_path
     else
       flash[:message] = "Required fields are missing. Please, enter again!"
       render :new
