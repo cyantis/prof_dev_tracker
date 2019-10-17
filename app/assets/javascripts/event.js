@@ -7,7 +7,15 @@ $(function () {
     posting.done(function(data) {
       let newEvent = new Event(data);
       let newRender = newEvent.postHTML();
-      $('#newEventPost').html(newRender); $('#new_event')[0].reset(); $("#newEventBtn").attr("disabled", false);
+      if(newEvent.id === undefined){
+        alert("All fields are required, please try again.");
+        $("#newEventBtn").attr("disabled", false);
+      }
+      else{
+        $('#newEventPost').html(newRender);
+        $('#new_event')[0].reset();
+        $("#newEventBtn").attr("disabled", false);
+      }
     });
   });
 });
