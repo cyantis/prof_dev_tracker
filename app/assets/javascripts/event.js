@@ -1,3 +1,5 @@
+'use strict';
+
 // create new learning event w/ ajax
 $(function () {
   $('#new_event').submit(function(e) {
