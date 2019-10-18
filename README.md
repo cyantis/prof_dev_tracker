@@ -1,5 +1,5 @@
 # Professional Development Tracker
-_Professional Development Tracker_ (PDT) is an app to help your staff track their professional development and learning.
+_Professional Development Tracker_ (PDT) is an app to help your staff track their professional development via learning event logs.
 
 ## Installation
 
@@ -15,7 +15,7 @@ to install dependencies.
 
     $ rails db:migrate
 
-    and then:
+    and then, if you wish to make use of some basic learning categories and see what the app looks like when populated with some data:
 
     $ rails db:seed
 
@@ -31,30 +31,29 @@ To end the server session, type `ctrl-c`.
 
 First time users ("employees") will need to create an account by supplying info such as username, password, location, and manager. Returning employees login via their username and password.
 
-Once logged in, the latest learning "events"--organization-wide--will be displayed. From this home page, the Employee can:
+Once logged in, the latest learning "events"--organization-wide--will be displayed. From this home page, the employee can:
 
-1. Create a new class by clicking `New Class`. Classes require a `Class Title` and `Class Type` and have optional fields for `Playlist` and `Poses`.
-2. View a previous class by clicking on the class title.
-3. End the session by clicking `Logout`.
+1. Visit their `Learning Profile`, which includes info about the employee, as well as their learning log. For employees that manage others, they will also see a list of the employees they oversee, including their learning logs.
+2. `Log New Learning`, which tracks the title of the learning "event", the date, the type of learning (e.g "conference attendee" or "book"), a description of the employee's learning experience, and a checkbox to indicate whether or not they have shared some of their insights with their team.
+3. Edit their profile, which includes the ability change their personal information, update their password, and select a new location and/or manager.
+4. Explore other employees' learning.
 
-By visiting a previous class page, the Teacher can:
+Each employee can create learning "events" and edit or delete these. Whether creating or editing a learning "event", employees always have the opportunity to `Cancel` any additions/changes.
 
-1. `Edit` or `Delete` the class.
-2. Return to the home page (`Back to Classes`).
-3. Add date-stamped notes to the class (`Add Note`).
+Clicking `Logout` from anywhere in the app ends the employee's session.
 
-Once a note has been added to a class, the Teacher can:
+## For Developers
 
-1. Edit the note (`Edit Note`).
-2. Delete the note (`Delete Note`).
+This app is built with Ruby on Rails, but it also relies on Javascript for a number of displays. There are also JSON feeds for easy API harvesting on these pages:
 
-Whether creating or editing a class or note, Teachers always have the opportunity to `Cancel` any additions/changes.
-
-Clicking `Logout` from anywhere in the app ends the Teacher's session.
+1. /employees/:id.json
+2. /events
+3. /events/:id.json
+3. /locations.json
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/cyantis/yoga_class_creator.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cyantis/prof_dev_tracker.
 
 ## License
 
