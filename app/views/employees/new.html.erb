@@ -6,3 +6,6 @@
 
 <h1>Create an Employee Account</h1>
 <%= render partial: 'form', locals: { employee: @employee } %>
+
+<p>Already have an account?</p>
+<p><%= button_to "Login!", new_sessions_path, method: :get %><p>
