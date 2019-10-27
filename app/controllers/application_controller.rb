@@ -11,9 +11,12 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      #flash[:message] = "You must be logged in to access this page."
       redirect_to new_sessions_path
     end
+  end
+
+  def current_employee
+    redirect_to root_path if session[:user_id] != params[:id].to_i
   end
 
 end
