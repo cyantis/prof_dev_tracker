@@ -9,6 +9,7 @@ $(function () {
     posting.done(function(data) {
       let newEvent = new Event(data);
       let newRender = newEvent.postHTML();
+      console.log(newRender);
       if(newEvent.id === undefined){
         alert("All fields are required, please try again.");
         $("#newEventBtn").attr("disabled", false);
@@ -79,18 +80,3 @@ Event.prototype.postHTML = function() {
       <li>${this.description}</=li>
     </ul>`);
 }
-
-//$(function () {
-//  $('.edit_event').submit(function(e) {
-//    e.preventDefault();
-//    let formData = $(this).serialize();
-//    let posting = $.put('/events', formData);
-//    posting.done(function(data) {
-//      $("#eventName").text(data.name);
-//      $("#eventDate").text(data.date);
-//      $("#eventCategory").text(data.category);
-//      $("#eventDescription").text(data.description);
-//      $("#eventShared").text(data.shared);
-//    });
-//  });
-//});
