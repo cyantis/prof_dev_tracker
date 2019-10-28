@@ -9,9 +9,8 @@ const getData = (url, callback) => {
 
 const cb = (data) => data;
 
-const employeesArray = getData('/employees.json', cb);
-
 //create event array
+const employeesArray = getData('/employees.json', cb);
 
 // create new learning event w/ ajax
 $(function () {
