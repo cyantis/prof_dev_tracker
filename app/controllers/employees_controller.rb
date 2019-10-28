@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :require_login, :current_employee, except: [:new, :create]
+  before_action :require_login, :current_employee, except: [:new, :create, :index]
 
   def index
     @employees = Employee.all

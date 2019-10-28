@@ -1,5 +1,18 @@
 'use strict';
 
+//generic fetch function
+const getData = (url, callback) => {
+  fetch(url)
+    .then(response => response.json())
+    .then(json => callback(json))
+}
+
+const cb = (data) => data;
+
+const employeesArray = getData('/employees.json', cb);
+
+//create event array
+
 // create new learning event w/ ajax
 $(function () {
   $('#new_event').submit(function(e) {
@@ -57,6 +70,27 @@ $(function() {
   });
 });
 
+//populate manager show page with their employee learning events
+$(function() {
+  $(document).ready(function() {
+    let path = window.location.pathname;
+    let managerId;
+    $.get(`${path}.json`, function(data) {
+      managerId = data.id;
+    });
+    $.get("/employees.json", function(data) {
+      const events = data;
+      let empArr = events.filter(e => e.manager_id === managerId);
+      for(let e of empArr){
+        $("#employeesLearningList").append(`<p>${e.name}</p><ul id=${e.id}Learning></ul>`);
+        for(event of e.events){
+          $(`#${e.id}Learning`).append(`<li><a href=/events/${event.id}>${event.name}</a></li>`);
+        }
+      }
+    });
+  });
+});
+
 //event class constructor
 class Event {
   constructor(e){
@@ -71,12 +105,11 @@ class Event {
 
 //event class method for html formatting/posting
 Event.prototype.postHTML = function() {
-    //let sharing;
-    //this.shared.includes(1) ? sharing = "Nice job sharing this with your team!" : sharing = "Don't forget to share this with your team!";
-    return (`<h1>${this.name}</h1>
+  return (`<h1>${this.name}</h1>
     <ul>
       <li>${this.date}</li>
       <li>${this.category}</li>
       <li>${this.description}</=li>
-    </ul>`);
+    </ul>`
+  );
 }

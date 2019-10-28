@@ -14,13 +14,6 @@
 
 <% if @employee.manager_id === nil %>
   <h3>Your Staff's Learning Activity</h3>
-  <% employee_arr.each do |emp| %>
-    <p><%= emp.name %></p>
-      <ul>
-        <% employee_event_arr(emp).each do |e| %>
-          <li><%= link_to "#{e.name}", event_path(e) %></li>
-        <% end %>
-      </ul>
-  <% end %>
-
+  <div id="employeesLearningList">
+  </div>
 <% end %>
