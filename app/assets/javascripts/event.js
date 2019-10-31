@@ -4,9 +4,9 @@
 const getData = (url, callback) => {
   fetch(url)
     .then(response => response.json())
-    .then(json => callback(json))
+    .then(json => cb(json))
 }
-
+//to-do create employee / event class, push data into master arrays
 const cb = (data) => data;
 
 //create event array
@@ -69,7 +69,7 @@ $(function() {
   });
 });
 
-//populate manager show page with their employee learning events
+//populate manager show page with their employees' learning events
 $(function() {
   $(document).ready(function() {
     let path = window.location.pathname;
@@ -78,8 +78,8 @@ $(function() {
       managerId = data.id;
     });
     $.get("/employees.json", function(data) {
-      const events = data;
-      let empArr = events.filter(e => e.manager_id === managerId);
+      const employees = data;
+      let empArr = employees.filter(e => e.manager_id === managerId);
       for(let e of empArr){
         $("#employeesLearningList").append(`<p>${e.name}</p><ul id=${e.id}Learning></ul>`);
         for(event of e.events){
