@@ -2,9 +2,10 @@
 
 //generic fetch function
 const getData = (url, callback) => {
+  let empArr;
   fetch(url)
     .then(response => response.json())
-    .then(json => cb(json))
+    .then(json => callback(json))
 }
 //to-do create employee / event class, push data into master arrays
 const cb = (data) => data;

@@ -3,6 +3,7 @@ class Employee < ApplicationRecord
   #belongs_to :manager
   has_many :employee_events
   has_many :events, through: :employee_events
+  has_many :comments
 
   validates :username, :email, :name, presence: true
   validates :username, :email, uniqueness: true

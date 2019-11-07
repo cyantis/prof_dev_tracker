@@ -17,3 +17,6 @@
   <%= button_to "Edit Learning", edit_employee_event_path(@employee, @event), method: "get" %>
   <%= button_to "Delete Learning", employee_event_path(@employee, @event), method: :delete %>
 <% end %>
+
+<h3>Leave a comment!</h3>
+<p><%= button_to "Add Comment", new_event_comment_path(@event), method: :get %></p>
