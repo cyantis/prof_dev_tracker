@@ -1,0 +1,4 @@
+<h1>Edit Comment</h1>
+<%= render partial: 'form', locals: {event: @event, comment: @comment} %>
+<%= button_to "Back to Learning Profile", employee_path(@employee), method: "get" %>
+<%= button_to "Delete Comment", event_comment_path(@event), method: :delete %>

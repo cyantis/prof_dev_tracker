@@ -18,5 +18,12 @@
   <%= button_to "Delete Learning", employee_event_path(@employee, @event), method: :delete %>
 <% end %>
 
-<h3>Leave a comment!</h3>
+<h4>Comments</h4>
+<% @event.comments.each do |c|  %>
+  <p><%= c.updated_at %> | <%= c.content %></p>
+  <% if c.employee_id == @employee.id %>
+    <%= button_to "Edit Comment", edit_event_comment_path(@event, c.id), method: :get %>
+    <%= button_to "Delete Comment", event_comment_path(@event, c.id), method: :delete %>
+  <% end %>
+<% end %>
 <p><%= button_to "Add Comment", new_event_comment_path(@event), method: :get %></p>
