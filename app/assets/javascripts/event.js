@@ -1,15 +1,40 @@
 'use strict';
 
+//master variables with json data for reuse
 let employeesArray = [];
+let eventsArray = [];
 
-//generic fetch function
+//jQuery datepicker for learning event date
+$(function() {
+  $(".datepicker").datepicker();
+});
+
+//fetch employees info
 fetch('/employees.json')
   .then(response => response.json())
   .then(json => employeesArray = json)
 
+//fetch events info
+//fetch('/events.json')
+//  .then(response => response.json())
+//  .then(json => eventsArray = json)
+
+//populate the index page with the 10 most recently updated learning events
+$(function() {
+  $(document).ready(function() {
+    $.get("/events.json", function(data) {
+      const event = data;
+      for(let i = (event.length - 1); i > (event.length - 11); i--){
+        let e = event[i]
+        let employeeArr = e["employees"]
+        $("#orgLearningList").append(`<li><a href=events/${e["id"]}>${employeeArr[employeeArr.length - 1]["name"]} | ${e["name"]}</a></li>`);
+      }
+    });
+  });
+});
 
 // create new learning event w/ ajax
-$(function () {
+$(function() {
   $('#new_event').submit(function(e) {
     e.preventDefault();
     let formData = $(this).serialize();
@@ -26,26 +51,6 @@ $(function () {
         $('#newEventPost').html(newRender);
         $('#new_event')[0].reset();
         $("#newEventBtn").attr("disabled", false);
-      }
-    });
-  });
-});
-
-//jQuery datepicker for learning event date
-$(function() {
-  $(".datepicker").datepicker();
-});
-
-
-//populate the index page with the 10 most recently updated learning events
-$(function() {
-  $(document).ready(function() {
-    $.get("/events.json", function(data) {
-      const event = data;
-      for(let i = (event.length - 1); i > (event.length - 11); i--){
-        let e = event[i]
-        let employeeArr = e["employees"]
-        $("#orgLearningList").append(`<li><a href=events/${e["id"]}>${employeeArr[employeeArr.length - 1]["name"]} | ${e["name"]}</a></li>`);
       }
     });
   });
@@ -119,7 +124,6 @@ $(function() {
       for(let i = (comments.length - 1); i < comments.length; i--){
         let c = comments[i];
         let emp = employeesArray.filter(e => e.id === c.employee_id)[0].username;
-        console.log(emp);
         $("#eventComments").append(`<p id=comment${c.id}>${c.updated_at.slice(0,10)} | ${emp} says: ${c.content}</p>`);
         if(c.employee_id === parseInt(currentUser)){
           $(`#comment${c.id}`).append(` | <a href=${path}/comments/${c.id}/edit><button>Edit Comment</button></a>`);
