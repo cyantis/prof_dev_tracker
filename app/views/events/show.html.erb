@@ -11,6 +11,8 @@
 
 </ul>
 
+<input id="currentUser" type="hidden" value=<%= @employee.id %> />
+
 <%= button_to "Home", root_path, method: "get" %>
 <%= button_to "Your learning profile", employee_path(@employee), method: "get" %>
 <% if @event.employees.include?(@employee) %>
@@ -19,11 +21,5 @@
 <% end %>
 
 <h4>Comments</h4>
-<% @event.comments.each do |c|  %>
-  <p><%= c.updated_at %> | <%= c.content %></p>
-  <% if c.employee_id == @employee.id %>
-    <%= button_to "Edit Comment", edit_event_comment_path(@event, c.id), method: :get %>
-    <%= button_to "Delete Comment", event_comment_path(@event, c.id), method: :delete %>
-  <% end %>
-<% end %>
-<p><%= button_to "Add Comment", new_event_comment_path(@event), method: :get %></p>
+  <div id="eventComments">
+  </div>

@@ -113,3 +113,22 @@ Event.prototype.postHTML = function() {
     </ul>`
   );
 }
+
+//display comments on event show page
+$(function() {
+  $(document).ready(function() {
+    let path = window.location.pathname;
+    let currentUser = $('#currentUser').attr('value')
+    $.get(`${path}.json`, function(data) {
+      const comments = data["comments"];
+      for(let i = (comments.length - 1); i < comments.length; i--){
+        let c = comments[i];
+        $("#eventComments").append(`<p id=comment${c.id}>${c.updated_at.slice(0,10)} | ${c.content}</p>`);
+        if(c.employee_id === parseInt(currentUser)){
+          $(`#comment${c.id}`).append(` | <a href=${path}/comments/${c.id}/edit><button>Edit Comment</button></a>`);
+
+        }
+      }
+    });
+  });
+});
