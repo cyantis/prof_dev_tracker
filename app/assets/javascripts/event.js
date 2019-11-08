@@ -1,17 +1,12 @@
 'use strict';
 
-//generic fetch function
-const getData = (url, callback) => {
-  let empArr;
-  fetch(url)
-    .then(response => response.json())
-    .then(json => callback(json))
-}
-//to-do create employee / event class, push data into master arrays
-const cb = (data) => data;
+let employeesArray = [];
 
-//create event array
-const employeesArray = getData('/employees.json', cb);
+//generic fetch function
+fetch('/employees.json')
+  .then(response => response.json())
+  .then(json => employeesArray = json)
+
 
 // create new learning event w/ ajax
 $(function () {
@@ -123,7 +118,9 @@ $(function() {
       const comments = data["comments"];
       for(let i = (comments.length - 1); i < comments.length; i--){
         let c = comments[i];
-        $("#eventComments").append(`<p id=comment${c.id}>${c.updated_at.slice(0,10)} | ${c.content}</p>`);
+        let emp = employeesArray.filter(e => e.id === c.employee_id)[0].username;
+        console.log(emp);
+        $("#eventComments").append(`<p id=comment${c.id}>${c.updated_at.slice(0,10)} | ${emp} says: ${c.content}</p>`);
         if(c.employee_id === parseInt(currentUser)){
           $(`#comment${c.id}`).append(` | <a href=${path}/comments/${c.id}/edit><button>Edit Comment</button></a>`);
         }
