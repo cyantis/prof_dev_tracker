@@ -29,3 +29,8 @@ Event.create({ name: "Denver Startup Week", date: "9/2/2019", category: "Confere
 Event.create({ name: "Think Like a Computer Programmer", date: "9/28/2019", category: "Book", description: "A good book", shared: 1, employee_ids: [7] })
 Event.create({ name: "San Diego Startup Week", date: "9/29/2019", category: "Conference Attendee", description: "Talk on quantum computing", shared: 1, employee_ids: [4] })
 Event.create({ name: "Denver Devs Pizza + Code", date: "10/5/2019", category: "Meetup/Social", description: "We ate pizza and built and app", shared: 0, employee_ids: [5] })
+
+Comment.create({ content: "How was the pizza?", employee_id: 1, event_id: 12})
+Comment.create({ content: "So, what the heck is it?", employee_id: 1, event_id: 6})
+Comment.create({ content: "It's this great way to display a collection of objects in a Ruby form", employee_id: 5, event_id: 6})
+Comment.create({ content: "Such a great book", employee_id: 3, event_id: 10})

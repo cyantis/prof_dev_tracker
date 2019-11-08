@@ -126,7 +126,6 @@ $(function() {
         $("#eventComments").append(`<p id=comment${c.id}>${c.updated_at.slice(0,10)} | ${c.content}</p>`);
         if(c.employee_id === parseInt(currentUser)){
           $(`#comment${c.id}`).append(` | <a href=${path}/comments/${c.id}/edit><button>Edit Comment</button></a>`);
-
         }
       }
     });
