@@ -9,19 +9,22 @@ $(function() {
   $(".datepicker").datepicker();
 });
 
-//fetch employees info
-fetch('/employees.json')
-  .then(response => response.json())
-  .then(json => employeesArray = json)
+//fetch data & initialize global variables
+async function fetchData(URL) {
+  const data = await fetch(URL);
+  const arr = await data.json();
 
-//fetch events info
-//fetch('/events.json')
-//  .then(response => response.json())
-//  .then(json => eventsArray = json)
+  return arr;
+}
+
+fetchData('/employees.json').then(res => employeesArray = res);
+fetchData('/events.json').then(res => eventsArray = res);
 
 //populate the index page with the 10 most recently updated learning events
 $(function() {
   $(document).ready(function() {
+    //why can I log employeesArray but not eventsArray here?
+    console.log(eventsArray); 
     $.get("/events.json", function(data) {
       const event = data;
       for(let i = (event.length - 1); i > (event.length - 11); i--){
