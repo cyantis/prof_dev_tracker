@@ -1,3 +1,4 @@
+(async () => {
 'use strict';
 
 //master variables with json data for reuse
@@ -135,3 +136,4 @@ $(function() {
     });
   });
 });
+})();
