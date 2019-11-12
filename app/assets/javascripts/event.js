@@ -1,8 +1,5 @@
+(async () => {
 'use strict';
-
-//master variables with json data for reuse
-let employeesArray = [];
-let eventsArray = [];
 
 //jQuery datepicker for learning event date
 $(function() {
@@ -17,8 +14,11 @@ async function fetchData(URL) {
   return arr;
 }
 
-fetchData('/employees.json').then(res => employeesArray = res);
-fetchData('/events.json').then(res => eventsArray = res);
+//master variables with json data for reuse
+const [ employeesArray, eventsArray ] = await Promise.all([
+  fetchData('/employees.json'),
+  fetchData('/events.json'),
+]);
 
 //populate the index page with the 10 most recently updated learning events
 $(function() {
@@ -135,3 +135,4 @@ $(function() {
     });
   });
 });
+})();
