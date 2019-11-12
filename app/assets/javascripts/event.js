@@ -74,21 +74,13 @@
   //populate manager show page with their employees' learning events
   $(function() {
     $(document).ready(function() {
-      let path = window.location.pathname;
-      let managerId;
-      $.get(`${path}.json`, function(data) {
-        managerId = data.id;
-      });
-      $.get("/employees.json", function(data) {
-        const employees = data;
-        let empArr = employees.filter(e => e.manager_id === managerId);
-        for(let e of empArr){
-          $("#employeesLearningList").append(`<p>${e.name}</p><ul id=${e.id}Learning></ul>`);
-          for(event of e.events){
-            $(`#${e.id}Learning`).append(`<li><a href=/events/${event.id}>${event.name}</a></li>`);
-          }
+      let empArr = employeesArray.filter(e => e.manager_id === currentEmployee.id);
+      for(let e of empArr){
+        $("#employeesLearningList").append(`<p>${e.name}</p><ul id=${e.id}Learning></ul>`);
+        for(event of e.events){
+          $(`#${e.id}Learning`).append(`<li><a href=/events/${event.id}>${event.name}</a></li>`);
         }
-      });
+      }
     });
   });
 
