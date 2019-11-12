@@ -15,8 +15,10 @@ async function fetchData(URL) {
 }
 
 //master variables with json data for reuse
-const employeesArray = await fetchData('/employees.json');
-const eventsArray    = await fetchData('/events.json');
+const [ employeesArray, eventsArray ] = await Promise.all([
+  fetchData('/employees.json'),
+  fetchData('/events.json'),
+]);
 
 //populate the index page with the 10 most recently updated learning events
 $(function() {
