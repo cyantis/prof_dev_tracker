@@ -38,13 +38,13 @@ Once logged in, the latest learning "events"--organization-wide--will be display
 3. Edit their profile, which includes the ability change their personal information, update their password, and select a new location and/or manager.
 4. Explore other employees' learning.
 
-Each employee can create learning "events" and edit or delete these. Whether creating or editing a learning "event", employees always have the opportunity to `Cancel` any additions/changes.
+Each employee can create learning "events" and edit or delete these. Whether creating or editing a learning "event", employees always have the opportunity to `Cancel` any additions/changes. Employees also have the ability to comment on their and others' learning events.
 
 Clicking `Logout` from anywhere in the app ends the employee's session.
 
 ## For Developers
 
-This app is built with Ruby on Rails, but it also relies on Javascript for a number of displays. There are also JSON feeds for easy API harvesting on these pages:
+This app is built with Ruby on Rails, but it relies on Javascript for a number of displays. There are JSON feeds for easy API harvesting on these pages:
 
 1. /employees/:id.json
 2. /events
