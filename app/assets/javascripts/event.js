@@ -15,9 +15,12 @@
   }
 
   //master variables with json data for reuse
-  const [ employeesArray, eventsArray ] = await Promise.all([
+  let path = window.location.pathname
+
+  const [ employeesArray, eventsArray, currentEmployee ] = await Promise.all([
     fetchData('/employees.json'),
     fetchData('/events.json'),
+    (path.includes('employees') ? fetchData(`${path}.json`) : undefined)
   ]);
 
   //populate the index page with the 10 most recently updated learning events
