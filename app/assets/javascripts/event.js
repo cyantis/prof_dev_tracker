@@ -126,5 +126,4 @@
         }
       });
     });
-//what's up with the double parens at the end here?
 })();
